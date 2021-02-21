@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()  # Initialize pygame
 
@@ -21,6 +22,15 @@ playerY_change = 0
 def player(playerX, playerY):
     # the blit function is used to draw objects to the game window
     window.blit(player_spaceship, (playerX, playerY))
+
+
+enemyImage = pygame.image.load("Images/enemy.png")
+enemyX = random.randint(0, 800)
+enemyY = random.randint(50, 150)
+
+
+def enemy(enemyX, enemyY):
+    window.blit(enemyImage, (enemyX, enemyY))
 
 
 gameRunning = True
@@ -55,4 +65,5 @@ while gameRunning:
     elif playerY >= 530:
         playerY = 530
     player(playerX, playerY)
+    enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
