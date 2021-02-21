@@ -48,6 +48,8 @@ while gameRunning:
                 playerY_change = -1
             if event.key == pygame.K_DOWN:
                 playerY_change = 1
+            if event.key == pygame.K_ESCAPE:
+                gameRunning = False
         if event.type == pygame.KEYUP:  # true when any key is released
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
