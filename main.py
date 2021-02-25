@@ -24,9 +24,12 @@ def player(playerX, playerY):
     window.blit(player_spaceship, (playerX, playerY))
 
 
+# defining Enemy
 enemyImage = pygame.image.load("Images/enemy.png")
 enemyX = random.randint(0, 800)
 enemyY = random.randint(50, 150)
+enemyX_Change = 0.3
+enemyY_Change = 40
 
 
 def enemy(enemyX, enemyY):
@@ -67,5 +70,13 @@ while gameRunning:
     elif playerY >= 530:
         playerY = 530
     player(playerX, playerY)
+
+    enemyX += enemyX_Change
+    if enemyX <= 0:
+        enemyX_Change = 0.3
+        enemyY+=enemyY_Change
+    elif enemyX >= 736:
+        enemyX_Change = -0.3
+        enemyY+=enemyY_Change
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
