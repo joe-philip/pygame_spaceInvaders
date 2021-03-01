@@ -36,6 +36,26 @@ def enemy(enemyX, enemyY):
     window.blit(enemyImage, (enemyX, enemyY))
 
 
+# defining bullet
+bulletImage = pygame.image.load("Images/bullet.png")
+bulletX = 370
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 1
+bulletReady = True
+
+
+def fireBullet(x_pos, y_pos):
+    global bulletReady
+    bulletReady = False
+    window.blit(bulletImage, (x_pos+16, y_pos+10))
+
+
+def getPlayerX_pos():
+    global playerX
+    return playerX
+
+
 gameRunning = True
 while gameRunning:
     for event in pygame.event.get():
@@ -51,14 +71,26 @@ while gameRunning:
                 playerY_change = -1
             if event.key == pygame.K_DOWN:
                 playerY_change = 1
+            if event.key == pygame.K_SPACE:
+                bulletY_change = 1
+                if bulletY == 480:
+                    bullet_firing_pos = getPlayerX_pos()
+                bulletReady = False
             if event.key == pygame.K_ESCAPE:
                 gameRunning = False
+
         if event.type == pygame.KEYUP:  # true when any key is released
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 playerY_change = 0
     window.fill((0, 0, 0))  # Setting window background color
+    if not bulletReady:
+        fireBullet(bullet_firing_pos, bulletY)
+        bulletY -= bulletY_change
+    if bulletY == 0:
+        bulletY = 480
+        bulletReady = True
     playerX += playerX_change
     if playerX <= 0:
         playerX = 0
@@ -74,9 +106,9 @@ while gameRunning:
     enemyX += enemyX_Change
     if enemyX <= 0:
         enemyX_Change = 0.3
-        enemyY+=enemyY_Change
+        enemyY += enemyY_Change
     elif enemyX >= 736:
         enemyX_Change = -0.3
-        enemyY+=enemyY_Change
+        enemyY += enemyY_Change
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
