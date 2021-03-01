@@ -51,11 +51,6 @@ def fireBullet(x_pos, y_pos):
     window.blit(bulletImage, (x_pos+16, y_pos+10))
 
 
-def getPlayerX_pos():
-    global playerX
-    return playerX
-
-
 gameRunning = True
 while gameRunning:
     for event in pygame.event.get():
@@ -74,7 +69,7 @@ while gameRunning:
             if event.key == pygame.K_SPACE:
                 bulletY_change = 1
                 if bulletY == 480:
-                    bullet_firing_pos = getPlayerX_pos()
+                    bullet_firing_pos = playerX
                 bulletReady = False
             if event.key == pygame.K_ESCAPE:
                 gameRunning = False
