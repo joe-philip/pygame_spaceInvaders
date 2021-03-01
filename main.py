@@ -69,7 +69,8 @@ while gameRunning:
             if event.key == pygame.K_SPACE:
                 bulletY_change = 1
                 if bulletY == 480:
-                    bullet_firing_pos = playerX
+                    bulletX = playerX
+                    bulletY = playerY
                 bulletReady = False
             if event.key == pygame.K_ESCAPE:
                 gameRunning = False
@@ -81,9 +82,9 @@ while gameRunning:
                 playerY_change = 0
     window.fill((0, 0, 0))  # Setting window background color
     if not bulletReady:
-        fireBullet(bullet_firing_pos, bulletY)
+        fireBullet(bulletX, bulletY)
         bulletY -= bulletY_change
-    if bulletY == 0:
+    if bulletY == 0:  # check wether bullet has reached top of screen
         bulletY = 480
         bulletReady = True
     playerX += playerX_change
