@@ -84,7 +84,7 @@ while gameRunning:
     if not bulletReady:
         fireBullet(bulletX, bulletY)
         bulletY -= bulletY_change
-    if bulletY == 0:  # check wether bullet has reached top of screen
+    if bulletY <= 0:  # check wether bullet has reached top of screen
         bulletY = 480
         bulletReady = True
     playerX += playerX_change
