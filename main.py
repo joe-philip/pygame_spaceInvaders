@@ -26,7 +26,7 @@ def player(playerX, playerY):
 
 # defining Enemy
 enemyImage = pygame.image.load("Images/enemy.png")
-enemyX = random.randint(0, 800)
+enemyX = random.randint(0, 735)
 enemyY = random.randint(50, 150)
 enemyX_Change = 0.3
 enemyY_Change = 40
@@ -106,5 +106,10 @@ while gameRunning:
     elif enemyX >= 736:
         enemyX_Change = -0.3
         enemyY += enemyY_Change
+    # collission detection
+    if enemyY <= bulletY <= enemyY+16 and ((enemyX <= bulletX+32 <= enemyX+32) or (enemyX <= bulletX <= enemyX+32)):
+        enemyX = random.randint(0, 735)
+        enemyY = random.randint(50, 150)
+        enemy(enemyX, enemyY)
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
