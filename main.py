@@ -1,5 +1,6 @@
 import pygame
 import random
+score = 0
 
 pygame.init()  # Initialize pygame
 
@@ -110,8 +111,10 @@ while gameRunning:
     if enemyY <= bulletY <= enemyY+16 and ((enemyX <= bulletX+32 <= enemyX+32) or (enemyX <= bulletX <= enemyX+32)):
         enemyX = random.randint(0, 735)
         enemyY = random.randint(50, 150)
-        bulletX = -10
-        bulletY = -10
+        bulletX = bulletY = -10
+        score += 1
+        print(score)
         enemy(enemyX, enemyY)
+
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
