@@ -26,10 +26,8 @@ def player(playerX, playerY):
 
 # defining Enemy
 enemyImage = pygame.image.load("Images/enemy.png")
-enemyX = random.randint(0, 735)
-enemyY = random.randint(50, 150)
-enemyX_Change = 0.3
-enemyY_Change = 40
+(enemyX, enemyY) = (random.randint(0, 735), random.randint(50, 150))
+(enemyX_Change, enemyY_Change) = (0.3, 40)
 
 
 def enemy(enemyX, enemyY):
