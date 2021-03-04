@@ -103,8 +103,7 @@ while gameRunning:
         enemyY += enemyY_Change
     # collission detection
     if enemyY <= bulletY <= enemyY+16 and ((enemyX <= bulletX+32 <= enemyX+32) or (enemyX <= bulletX <= enemyX+32)):
-        enemyX = random.randint(0, 735)
-        enemyY = random.randint(50, 150)
+        (enemyX, enemyY) = (random.randint(0, 735), random.randint(50, 150))
         bulletReady = not bulletReady
         (bulletX, bulletY) = (playerX, playerY)
         score += 1
