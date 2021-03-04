@@ -64,8 +64,7 @@ while gameRunning:
                 playerY_change = 1
             if event.key == pygame.K_SPACE:
                 bulletY_change = 1
-                if bulletY == 480:
-                    (bulletX, bulletY) = (playerX, playerY)
+                (bulletX, bulletY) = (playerX, playerY)
                 bulletReady = False
             if event.key == pygame.K_ESCAPE:
                 gameRunning = False
@@ -109,6 +108,5 @@ while gameRunning:
         score += 1
         print(score)
         enemy(enemyX, enemyY)
-
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
