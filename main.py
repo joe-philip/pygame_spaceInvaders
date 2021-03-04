@@ -14,10 +14,9 @@ pygame.display.set_icon(Icon)  # Loading icon to app
 
 # loading player image
 player_spaceship = pygame.image.load("Images/player.png")
-playerX = 370  # X position of the image on the screen
-playerY = 480  # Y position of the image on the screen
-playerX_change = 0
-playerY_change = 0
+# X position of the image on the screen,Y position of the image on the screen
+(playerX, playerY) = (370, 480)
+(playerX_change, playerY_change) = (0, 0)
 
 
 def player(playerX, playerY):
@@ -39,10 +38,8 @@ def enemy(enemyX, enemyY):
 
 # defining bullet
 bulletImage = pygame.image.load("Images/bullet.png")
-bulletX = 370
-bulletY = 480
-bulletX_change = 0
-bulletY_change = 1
+(bulletX, bulletY) = (370, 480)
+(bulletX_change, bulletY_change) = (0, 1)
 bulletReady = True
 
 
@@ -70,8 +67,7 @@ while gameRunning:
             if event.key == pygame.K_SPACE:
                 bulletY_change = 1
                 if bulletY == 480:
-                    bulletX = playerX
-                    bulletY = playerY
+                    (bulletX, bulletY) = (playerX, playerY)
                 bulletReady = False
             if event.key == pygame.K_ESCAPE:
                 gameRunning = False
@@ -112,8 +108,7 @@ while gameRunning:
         enemyX = random.randint(0, 735)
         enemyY = random.randint(50, 150)
         bulletReady = not bulletReady
-        bulletX = playerX
-        bulletY = playerY
+        (bulletX, bulletY) = (playerX, playerY)
         score += 1
         print(score)
         enemy(enemyX, enemyY)
