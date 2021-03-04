@@ -110,6 +110,8 @@ while gameRunning:
     if enemyY <= bulletY <= enemyY+16 and ((enemyX <= bulletX+32 <= enemyX+32) or (enemyX <= bulletX <= enemyX+32)):
         enemyX = random.randint(0, 735)
         enemyY = random.randint(50, 150)
+        bulletX = -10
+        bulletY = -10
         enemy(enemyX, enemyY)
     enemy(enemyX, enemyY)
     pygame.display.update()  # updated window to background color
